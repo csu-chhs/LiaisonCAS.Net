@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiaisonCAS.Net", "LiaisonCAS.Net\LiaisonCAS.Net.csproj", "{2D194B9B-6427-457C-8844-459368387DAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D194B9B-6427-457C-8844-459368387DAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D194B9B-6427-457C-8844-459368387DAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D194B9B-6427-457C-8844-459368387DAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D194B9B-6427-457C-8844-459368387DAD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A02D241D-3FCB-4937-85A2-FD18570E40C7}
+	EndGlobalSection
+EndGlobal
