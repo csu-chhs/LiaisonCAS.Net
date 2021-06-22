@@ -12,6 +12,12 @@ namespace LiaisonCAS.Net
         private readonly string _username;
         private readonly string _password;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="apiKey"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
         public LiaisonCASClient(string apiKey, 
             string username,
             string password)
@@ -23,17 +29,18 @@ namespace LiaisonCAS.Net
             _password = password;
 
             Application = new ApplicationClient(_client);
+            File = new FileClient(_client);
         }
 
+        /// <summary>
+        /// This method specifically gets placed outside of the 
+        /// constructor so that it does not run every time a new object 
+        /// is constructed.  DI creates a new object on every page load
+        /// in an app, and that would quickly increase the number of 
+        /// calls we are making.
+        /// </summary>
         public void SetupAuthenticationHeaders()
         {
-            // This method specifically gets placed outside of the 
-            // constructor so that it does not run every time a new object 
-            // is constructed.  DI creates a new object on every page load
-            // in an app, and that would quickly increase the number of 
-            // calls we are making.
-
-
             // Fetch and set the token.
             IAuthenticationClient authenticationClient = new AuthenticationClient(_client);
             AuthenticationTokenResourceModel tokenResourceModel = new AuthenticationTokenResourceModel(_username, _password);
@@ -43,6 +50,13 @@ namespace LiaisonCAS.Net
             _client.AddDefaultHeader("Authorization", tokenResponse.Token);
         }
 
+        /// <summary>
+        /// This method specifically gets placed outside of the 
+        /// constructor so that it does not run every time a new object 
+        /// is constructed.  DI creates a new object on every page load
+        /// in an app, and that would quickly increase the number of 
+        /// calls we are making.
+        /// </summary>
         public async Task SetupAuthenticationHeadersAsync()
         {
             // Fetch and set the token.
@@ -54,6 +68,14 @@ namespace LiaisonCAS.Net
             _client.AddDefaultHeader("Authorization", tokenResponse.Token);
         }
 
+        /// <summary>
+        /// Access the Applications API
+        /// </summary>
         public IApplicationClient Application { get; }
+
+        /// <summary>
+        /// Access the File API
+        /// </summary>
+        public IFileClient File { get; }
     }
 }
