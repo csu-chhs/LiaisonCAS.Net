@@ -9,7 +9,7 @@ namespace LiaisonCAS.Net.Clients
 {
     public class FileClient : IFileClient
     {
-        private readonly RestClient _client { get; set; }
+        private readonly RestClient _client;
 
         public FileClient(RestClient client)
         {
@@ -25,7 +25,8 @@ namespace LiaisonCAS.Net.Clients
         /// <returns></returns>
         public async Task<byte[]> GetFileContentAsync(int applicationFormId, int organizationId, int fileId)
         {
-            return TODO_IMPLEMENT_ME;
+            return null;
+            //return TODO_IMPLEMENT_ME;
         }
     }
 }

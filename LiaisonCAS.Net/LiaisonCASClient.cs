@@ -22,7 +22,7 @@ namespace LiaisonCAS.Net
             string username,
             string password)
         {
-            RestClient client = new RestClient();
+            RestClient client = new RestClient("https://api.liaisonedu.com/v1/");
             client.AddDefaultHeader("x-api-key", apiKey);
             _client = client;
             _username = username;
@@ -30,6 +30,7 @@ namespace LiaisonCAS.Net
 
             Application = new ApplicationClient(_client);
             File = new FileClient(_client);
+            Program = new ProgramClient(_client);
         }
 
         /// <summary>
@@ -77,5 +78,10 @@ namespace LiaisonCAS.Net
         /// Access the File API
         /// </summary>
         public IFileClient File { get; }
+
+        /// <summary>
+        /// Access the Program API
+        /// </summary>
+        public IProgramClient Program { get; }
     }
 }

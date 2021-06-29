@@ -32,5 +32,10 @@ namespace LiaisonCAS.Net
         /// Access the File API
         /// </summary>
         IFileClient File { get; }
+
+        /// <summary>
+        /// Access the Program API
+        /// </summary>
+        IProgramClient Program { get; }
     }
 }

@@ -8,8 +8,9 @@ namespace LiaisonCAS.Net.ResourceModels.AggregateModels
     {
         public ListApplicationsResourceModel()
         {
-            Items = new List<ApplicationResourceModel>();
+            applications = new List<ApplicationsApplicationResourceModel>();
         }
-        public List<ApplicationResourceModel> Items { get; set; }
+        public List<ApplicationsApplicationResourceModel> applications { get; set; }
+        public List<string> validationErrors { get; set; }
     }
 }
