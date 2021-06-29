@@ -11,6 +11,7 @@ namespace LiaisonCAS.Net
         private RestClient _client;
         private readonly string _username;
         private readonly string _password;
+        private string _token;
 
         /// <summary>
         /// 
@@ -48,7 +49,8 @@ namespace LiaisonCAS.Net
 
             AuthenticationTokenResponseResourceModel tokenResponse = authenticationClient
                 .FetchAuthenticationToken(tokenResourceModel);
-            _client.AddDefaultHeader("Authorization", tokenResponse.Token);
+            _token = tokenResponse.Token;
+            _client.AddDefaultHeader("Authorization", _token);
         }
 
         /// <summary>
@@ -66,7 +68,8 @@ namespace LiaisonCAS.Net
 
             AuthenticationTokenResponseResourceModel tokenResponse = await authenticationClient
                 .FetchAuthenticationTokenAsync(tokenResourceModel);
-            _client.AddDefaultHeader("Authorization", tokenResponse.Token);
+            _token = tokenResponse.Token;
+            _client.AddDefaultHeader("Authorization", _token);
         }
 
         /// <summary>
