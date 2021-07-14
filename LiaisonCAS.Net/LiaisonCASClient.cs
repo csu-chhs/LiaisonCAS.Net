@@ -50,7 +50,7 @@ namespace LiaisonCAS.Net
             AuthenticationTokenResponseResourceModel tokenResponse = authenticationClient
                 .FetchAuthenticationToken(tokenResourceModel);
             _token = tokenResponse.Token;
-            _client.AddDefaultHeader("Authorization", _token);
+            _client.AddDefaultHeader("Authorization", $"{_token}");
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace LiaisonCAS.Net
             AuthenticationTokenResponseResourceModel tokenResponse = await authenticationClient
                 .FetchAuthenticationTokenAsync(tokenResourceModel);
             _token = tokenResponse.Token;
-            _client.AddDefaultHeader("Authorization", _token);
+            _client.AddDefaultHeader("Authorization", $"{_token}");
         }
 
         /// <summary>
