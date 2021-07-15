@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net;
+using System.Threading.Tasks;
 using LiaisonCAS.Net.Exceptions;
 using LiaisonCAS.Net.Interfaces;
 using LiaisonCAS.Net.ResourceModels;
@@ -31,7 +32,17 @@ namespace LiaisonCAS.Net.Clients
                 return response.Data;
             }
 
-            throw new LiaisonClientException($"Failed to fetch application {applicationId}",
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                throw new LiaisonClientNotAuthorized($"Application ID {applicationId} Unauthorized");
+            }
+
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                throw new LiaisonClientNotFound($"Application ID {applicationId} not found");
+            }
+
+            throw new LiaisonClientException($"Failed to fetch application {applicationId} {response.StatusCode}",
                 response.ErrorException);
 
         }
@@ -47,7 +58,42 @@ namespace LiaisonCAS.Net.Clients
                 return response.Data;
             }
 
-            throw new LiaisonClientException($"Failed to fetch application {applicationId}",
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                throw new LiaisonClientNotAuthorized($"Application ID {applicationId} Unauthorized");
+            }
+
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                throw new LiaisonClientNotFound($"Application ID {applicationId} not found");
+            }
+
+            throw new LiaisonClientException($"Failed to fetch application {applicationId} {response.StatusCode}",
+                response.ErrorException);
+        }
+
+        public ApplicationResourceModel GetApplication(int applicationFormId, int organizationId, int programId, long applicationId)
+        {
+            var request =
+                new RestRequest(
+                    $"applicationForms/{applicationFormId}/organizations/{organizationId}/programs/{programId}/applications/{applicationId}");
+            var response = _client.Execute<ApplicationResourceModel>(request);
+            if (response.IsSuccessful)
+            {
+                return response.Data;
+            }
+
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                throw new LiaisonClientNotAuthorized($"Application ID {applicationId} Unauthorized");
+            }
+
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                throw new LiaisonClientNotFound($"Application ID {applicationId} not found");
+            }
+
+            throw new LiaisonClientException($"Failed to fetch application {applicationId} {response.StatusCode}",
                 response.ErrorException);
         }
 
@@ -97,8 +143,17 @@ namespace LiaisonCAS.Net.Clients
         /// <returns></returns>
         public ListApplicationsResourceModel GetApplications(int applicationFormId, int organizationId, int programId)
         {
-            return null;
-            //return TODO_IMPLEMENT_ME;
+            var request =
+                new RestRequest(
+                    $"applicationForms/{applicationFormId}/organizations/{organizationId}/programs/{programId}/applications");
+            var response = _client.Execute<ListApplicationsResourceModel>(request);
+            if (response.IsSuccessful)
+            {
+                return response.Data;
+            }
+
+            throw new LiaisonClientException("Failed to fetch applications",
+                response.ErrorException);
         }
     }
 }

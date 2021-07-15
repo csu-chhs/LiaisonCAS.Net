@@ -6,7 +6,8 @@ namespace LiaisonCAS.Net.ResourceModels
     {
         public long ApplicationId { get; set; }
         public long CasApplicationId { get; set; }
-        public AppGatewayResourceModel AppGateway { get; set; }
-        public PersonalInformationResourceModel PersonalInfo { get; set; }
+        public AppGatewayResourceModel? AppGateway { get; set; }
+        public PersonalInformationResourceModel? PersonalInfo { get; set; }
+        public SupportingInformationResourceModel? SupportingInfo { get; set; }
     }
 }
