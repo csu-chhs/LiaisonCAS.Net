@@ -47,11 +47,13 @@ namespace LiaisonCAS.Net.Clients
 
         }
 
-        public async Task<ApplicationResourceModel> GetApplicationAsync(int applicationFormId, int organizationId, int programId, long applicationId)
+        public async Task<ApplicationResourceModel> GetApplicationAsync(int applicationFormId, int organizationId, 
+            int programId, long applicationId, string expand = "all")
         {
             var request =
                 new RestRequest(
                     $"applicationForms/{applicationFormId}/organizations/{organizationId}/programs/{programId}/applications/{applicationId}");
+            request.AddParameter("expand", expand);
             var response = await _client.ExecuteAsync<ApplicationResourceModel>(request);
             if (response.IsSuccessful)
             {
@@ -72,11 +74,13 @@ namespace LiaisonCAS.Net.Clients
                 response.ErrorException);
         }
 
-        public ApplicationResourceModel GetApplication(int applicationFormId, int organizationId, int programId, long applicationId)
+        public ApplicationResourceModel GetApplication(int applicationFormId, int organizationId, 
+            int programId, long applicationId, string expand = "all")
         {
             var request =
                 new RestRequest(
                     $"applicationForms/{applicationFormId}/organizations/{organizationId}/programs/{programId}/applications/{applicationId}");
+            request.AddParameter("expand", expand);
             var response = _client.Execute<ApplicationResourceModel>(request);
             if (response.IsSuccessful)
             {

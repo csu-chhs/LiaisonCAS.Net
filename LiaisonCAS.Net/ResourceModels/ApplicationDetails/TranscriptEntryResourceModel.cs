@@ -14,5 +14,6 @@ namespace LiaisonCAS.Net.ResourceModels.ApplicationDetails
         public string? CompletionStatus { get; set; }
         public List<GPAwesResourceModel> GPAwes { get; set; }
         public List<MgmtGpaResultsResourceModel> MgmtGpaResults { get; set; }
+        public MgmtTranscriptSummarTotalResourceModel? MgmtTranscriptSummaryTotal { get; set; }
     }
 }
