@@ -16,10 +16,10 @@ namespace LiaisonCAS.Net.Interfaces
             long applicationId);
 
         Task<ApplicationResourceModel> GetApplicationAsync(int applicationFormId,
-            int organizationId, int programId, long applicationId);
+            int organizationId, int programId, long applicationId, string expand = "all");
 
         ApplicationResourceModel GetApplication(int applicationFormId,
-            int organizationId, int programId, long applicationId);
+            int organizationId, int programId, long applicationId, string expand = "all");
         
         /// <summary>
         /// Fetch a given application

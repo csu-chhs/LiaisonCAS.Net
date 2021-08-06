@@ -9,5 +9,6 @@ namespace LiaisonCAS.Net.ResourceModels
         public AppGatewayResourceModel? AppGateway { get; set; }
         public PersonalInformationResourceModel? PersonalInfo { get; set; }
         public SupportingInformationResourceModel? SupportingInfo { get; set; }
+        public AcademicHistoryResourceModel? AcademicHistory { get; set; }
     }
 }
