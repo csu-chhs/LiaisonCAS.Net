@@ -8,5 +8,6 @@ namespace LiaisonCAS.Net.ResourceModels.ApplicationDetails
     {
         public string? CompletionStatus { get; set; }
         public ReferencesResourceModel? References { get; set; }
+        public DocumentsResourceModel? Documents { get; set; }
     }
 }
