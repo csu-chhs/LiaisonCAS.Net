@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using LiaisonCAS.Net.Exceptions;
 using LiaisonCAS.Net.Interfaces;
 using LiaisonCAS.Net.ResourceModels;

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace LiaisonCAS.Net.ResourceModels
+﻿namespace LiaisonCAS.Net.ResourceModels
 {
     public class FileResourceModel
     {
