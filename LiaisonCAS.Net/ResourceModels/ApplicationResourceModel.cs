@@ -10,5 +10,6 @@ namespace LiaisonCAS.Net.ResourceModels
         public PersonalInformationResourceModel? PersonalInfo { get; set; }
         public SupportingInformationResourceModel? SupportingInfo { get; set; }
         public AcademicHistoryResourceModel? AcademicHistory { get; set; }
+        public ApplicationSubmissionResourceModel? ApplicationSubmission { get; set; }
     }
 }

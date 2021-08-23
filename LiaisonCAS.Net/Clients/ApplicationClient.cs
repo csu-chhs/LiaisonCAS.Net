@@ -109,10 +109,25 @@ namespace LiaisonCAS.Net.Clients
         /// <returns></returns>
         public ApplicationResourceModel GetApplication(int applicationFormId, int applicationId)
         {
+            var request = new RestRequest($"applicationForms/{applicationFormId}/applications/{applicationId}");
+            var response = _client.Execute<ApplicationResourceModel>(request);
+            if (response.IsSuccessful)
+            {
+                return response.Data;
+            }
 
-            return null;
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                throw new LiaisonClientNotAuthorized($"Application ID {applicationId} Unauthorized");
+            }
 
-            //return TODO_IMPLEMENT_ME;
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                throw new LiaisonClientNotFound($"Application ID {applicationId} not found");
+            }
+
+            throw new LiaisonClientException($"Failed to fetch application {applicationId} {response.StatusCode}",
+                response.ErrorException);
         }
 
         /// <summary>
