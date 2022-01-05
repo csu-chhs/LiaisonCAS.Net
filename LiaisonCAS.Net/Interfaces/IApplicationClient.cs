@@ -28,7 +28,7 @@ namespace LiaisonCAS.Net.Interfaces
         /// <param name="applicationId"></param>
         /// <returns></returns>
         ApplicationResourceModel GetApplication(int applicationFormId,
-            int applicationId);
+            long applicationId);
         
         /// <summary>
         /// Fetch all applications by organization/program.

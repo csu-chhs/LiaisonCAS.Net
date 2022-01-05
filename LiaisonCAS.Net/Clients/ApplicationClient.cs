@@ -1,5 +1,4 @@
 ﻿using System.Net;
-using System.Threading.Tasks;
 using LiaisonCAS.Net.Exceptions;
 using LiaisonCAS.Net.Interfaces;
 using LiaisonCAS.Net.ResourceModels;
@@ -107,7 +106,7 @@ namespace LiaisonCAS.Net.Clients
         /// <param name="applicationFormId"></param>
         /// <param name="applicationId"></param>
         /// <returns></returns>
-        public ApplicationResourceModel GetApplication(int applicationFormId, int applicationId)
+        public ApplicationResourceModel GetApplication(int applicationFormId, long applicationId)
         {
             var request = new RestRequest($"applicationForms/{applicationFormId}/applications/{applicationId}");
             var response = _client.Execute<ApplicationResourceModel>(request);
