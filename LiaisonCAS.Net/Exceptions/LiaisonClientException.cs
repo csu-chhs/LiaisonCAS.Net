@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LiaisonCAS.Net.Exceptions
+﻿namespace LiaisonCAS.Net.Exceptions
 {
     public class LiaisonClientException : Exception
     {

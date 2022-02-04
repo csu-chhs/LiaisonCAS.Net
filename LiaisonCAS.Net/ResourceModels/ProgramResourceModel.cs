@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LiaisonCAS.Net.ResourceModels
+﻿namespace LiaisonCAS.Net.ResourceModels
 {
     public class ProgramResourceModel
     {

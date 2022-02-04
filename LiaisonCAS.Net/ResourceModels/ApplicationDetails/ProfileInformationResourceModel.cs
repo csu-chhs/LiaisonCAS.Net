@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LiaisonCAS.Net.ResourceModels.ApplicationDetails
+﻿namespace LiaisonCAS.Net.ResourceModels.ApplicationDetails
 {
     public class ProfileInformationResourceModel
     {

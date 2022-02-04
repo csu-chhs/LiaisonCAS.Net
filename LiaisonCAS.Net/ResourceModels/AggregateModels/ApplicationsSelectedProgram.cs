@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LiaisonCAS.Net.ResourceModels.AggregateModels
+﻿namespace LiaisonCAS.Net.ResourceModels.AggregateModels
 {
     public class ApplicationsSelectedProgram
     {

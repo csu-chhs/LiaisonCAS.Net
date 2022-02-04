@@ -80,7 +80,7 @@ namespace LiaisonCAS.Net.Clients
                 new RestRequest(
                     $"applicationForms/{applicationFormId}/organizations/{organizationId}/programs/{programId}/applications/{applicationId}");
             request.AddParameter("expand", expand);
-            var response = _client.Execute<ApplicationResourceModel>(request);
+            var response = _client.ExecuteAsync<ApplicationResourceModel>(request).Result;
             if (response.IsSuccessful)
             {
                 return response.Data;
@@ -109,7 +109,7 @@ namespace LiaisonCAS.Net.Clients
         public ApplicationResourceModel GetApplication(int applicationFormId, long applicationId)
         {
             var request = new RestRequest($"applicationForms/{applicationFormId}/applications/{applicationId}");
-            var response = _client.Execute<ApplicationResourceModel>(request);
+            var response = _client.ExecuteAsync<ApplicationResourceModel>(request).Result;
             if (response.IsSuccessful)
             {
                 return response.Data;
@@ -164,7 +164,7 @@ namespace LiaisonCAS.Net.Clients
             var request =
                 new RestRequest(
                     $"applicationForms/{applicationFormId}/organizations/{organizationId}/programs/{programId}/applications");
-            var response = _client.Execute<ListApplicationsResourceModel>(request);
+            var response = _client.ExecuteAsync<ListApplicationsResourceModel>(request).Result;
             if (response.IsSuccessful)
             {
                 return response.Data;

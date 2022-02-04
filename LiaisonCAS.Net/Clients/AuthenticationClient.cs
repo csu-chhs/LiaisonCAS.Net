@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using LiaisonCAS.Net.Exceptions;
+﻿using LiaisonCAS.Net.Exceptions;
 using LiaisonCAS.Net.Interfaces;
 using LiaisonCAS.Net.ResourceModels;
 using RestSharp;
@@ -25,9 +24,9 @@ namespace LiaisonCAS.Net.Clients
         /// <returns></returns>
         public AuthenticationTokenResponseResourceModel FetchAuthenticationToken(AuthenticationTokenResourceModel resourceModel)
         {
-            var request = new RestRequest($"{_url}", Method.POST);
+            var request = new RestRequest($"{_url}");
             request.AddJsonBody(resourceModel);
-            var response = _client.Execute<AuthenticationTokenResponseResourceModel>(request);
+            var response = _client.ExecuteAsync<AuthenticationTokenResponseResourceModel>(request, Method.Post).Result;
             if (response.IsSuccessful)
             {
                 return response.Data;
@@ -44,9 +43,9 @@ namespace LiaisonCAS.Net.Clients
         /// <returns></returns>
         public async Task<AuthenticationTokenResponseResourceModel> FetchAuthenticationTokenAsync(AuthenticationTokenResourceModel resourceModel)
         {
-            var request = new RestRequest($"{_url}", Method.POST);
+            var request = new RestRequest($"{_url}");
             request.AddJsonBody(resourceModel);
-            var response = await _client.ExecuteAsync<AuthenticationTokenResponseResourceModel>(request);
+            var response = await _client.ExecuteAsync<AuthenticationTokenResponseResourceModel>(request, Method.Post);
             if (response.IsSuccessful)
             {
                 return response.Data;
