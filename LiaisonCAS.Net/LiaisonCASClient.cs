@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using LiaisonCAS.Net.Clients;
+﻿using LiaisonCAS.Net.Clients;
 using LiaisonCAS.Net.Interfaces;
 using LiaisonCAS.Net.ResourceModels;
 using RestSharp;

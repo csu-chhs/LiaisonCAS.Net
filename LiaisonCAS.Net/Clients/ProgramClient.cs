@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Net;
-using System.Threading.Tasks;
+﻿using System.Net;
 using LiaisonCAS.Net.Exceptions;
 using LiaisonCAS.Net.Interfaces;
 using LiaisonCAS.Net.ResourceModels;
@@ -55,7 +53,7 @@ namespace LiaisonCAS.Net.Clients
         {
             var request =
                 new RestRequest($"applicationForms/{applicationFormId}/organizations/{organizationId}/programs");
-            var response = _client.Execute<List<ProgramResourceModel>>(request);
+            var response = _client.ExecuteAsync<List<ProgramResourceModel>>(request).Result;
             if (response.IsSuccessful)
             {
                 return response.Data;

@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using LiaisonCAS.Net.ResourceModels;
+﻿using LiaisonCAS.Net.ResourceModels;
 using LiaisonCAS.Net.ResourceModels.AggregateModels;
 
 namespace LiaisonCAS.Net.Interfaces

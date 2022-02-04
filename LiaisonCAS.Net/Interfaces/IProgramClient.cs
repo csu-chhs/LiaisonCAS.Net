@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using LiaisonCAS.Net.ResourceModels;
+﻿using LiaisonCAS.Net.ResourceModels;
 
 namespace LiaisonCAS.Net.Interfaces
 {

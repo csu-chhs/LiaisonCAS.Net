@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace LiaisonCAS.Net.ResourceModels.AggregateModels
+﻿namespace LiaisonCAS.Net.ResourceModels.AggregateModels
 {
     /// <summary>
     /// This class represents the embedded "Applications" object

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace LiaisonCAS.Net.ResourceModels.AggregateModels
+﻿namespace LiaisonCAS.Net.ResourceModels.AggregateModels
 {
     public class ListApplicationsResourceModel
     {

@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using LiaisonCAS.Net.Interfaces;
+﻿using LiaisonCAS.Net.Interfaces;
 
 namespace LiaisonCAS.Net
 {
