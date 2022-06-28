@@ -36,5 +36,10 @@ namespace LiaisonCAS.Net
         /// Access the Program API
         /// </summary>
         IProgramClient Program { get; }
+
+        /// <summary>
+        /// Access the Account API
+        /// </summary>
+        IAccountClient Account { get; }
     }
 }
