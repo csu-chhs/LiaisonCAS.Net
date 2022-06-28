@@ -31,6 +31,7 @@ namespace LiaisonCAS.Net
             Application = new ApplicationClient(_client);
             File = new FileClient(_client);
             Program = new ProgramClient(_client);
+            Account = new AccountClient(_client);
         }
 
         /// <summary>
@@ -85,5 +86,10 @@ namespace LiaisonCAS.Net
         /// Access the Program API
         /// </summary>
         public IProgramClient Program { get; }
+
+        /// <summary>
+        /// Access the Account API
+        /// </summary>
+        public IAccountClient Account { get; }
     }
 }
