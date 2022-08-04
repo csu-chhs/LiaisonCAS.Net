@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>CHHS Application Development Team</Authors>
-    <Version>1.4.0</Version>
+    <Version>1.5.0</Version>
     <PackageProjectUrl>https://github.com/csu-chhs/LiaisonCAS.Net</PackageProjectUrl>
     <Company>College of Health and Human Sciences</Company>
     <PackageId>LiaisonCAS.Net</PackageId>
@@ -16,6 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="6.0.7" />
     <PackageReference Include="RestSharp" Version="108.0.1" />
   </ItemGroup>
 
