@@ -26,7 +26,7 @@ namespace LiaisonCAS.Net.Extensions.Diagnostics
 
             try
             {
-                await _casClient.SetupAuthenticationHeadersAsync();
+                await _casClient.Account.GetAccountInformationAsync(cancellationToken);
             }
             catch (LiaisonClientException)
             {
