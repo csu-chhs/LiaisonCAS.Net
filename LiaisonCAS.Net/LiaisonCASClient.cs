@@ -18,9 +18,11 @@ namespace LiaisonCAS.Net
         /// <param name="apiKey"></param>
         /// <param name="username"></param>
         /// <param name="password"></param>
+        /// <param name="autoRegisterAuthHeader"></param>
         public LiaisonCASClient(string apiKey, 
             string username,
-            string password)
+            string password,
+            bool autoRegisterAuthHeader = false)
         {
             RestClient client = new RestClient("https://api.liaisonedu.com/v1/");
             client.AddDefaultHeader("x-api-key", apiKey);
@@ -32,6 +34,11 @@ namespace LiaisonCAS.Net
             File = new FileClient(_client);
             Program = new ProgramClient(_client);
             Account = new AccountClient(_client);
+
+            if (autoRegisterAuthHeader)
+            {
+                SetupAuthenticationHeaders();
+            }
         }
 
         /// <summary>
@@ -45,7 +52,8 @@ namespace LiaisonCAS.Net
         {
             // Fetch and set the token.
             IAuthenticationClient authenticationClient = new AuthenticationClient(_client);
-            AuthenticationTokenResourceModel tokenResourceModel = new AuthenticationTokenResourceModel(_username, _password);
+            AuthenticationTokenResourceModel tokenResourceModel = new AuthenticationTokenResourceModel(_username, 
+                _password);
 
             AuthenticationTokenResponseResourceModel tokenResponse = authenticationClient
                 .FetchAuthenticationToken(tokenResourceModel);
