@@ -15,7 +15,13 @@ ILiaisonCASClient client = new LiaisonCASClient("my-api-key", "myusername", "myp
 ```
 
 Before you can make calls to the Liaison API you need to set your authentication header token.  This is done seperately
-from the client constructor to prevent multiple unnecessary calls in a dependency injected scenario, like Asp.Net Core.
+from the client constructor to prevent multiple unnecessary calls in a dependency injected scenario, like Asp.Net Core.  However,
+if you register this service as a singleton, you can skip calling the setup header, by configuring the client as follows:
+
+```
+ILiaisonCASClient client = new LiaisonCASClient("my-api-key", "myusername", "mypassword", true);
+```
+
 
 Call one of the following (depending on your async status)
 
