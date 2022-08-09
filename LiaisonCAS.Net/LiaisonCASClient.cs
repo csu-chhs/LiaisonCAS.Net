@@ -2,6 +2,7 @@
 using LiaisonCAS.Net.Interfaces;
 using LiaisonCAS.Net.ResourceModels;
 using RestSharp;
+using RestSharp.Serializers.NewtonsoftJson;
 
 namespace LiaisonCAS.Net
 {
@@ -26,6 +27,7 @@ namespace LiaisonCAS.Net
         {
             RestClient client = new RestClient("https://api.liaisonedu.com/v1/");
             client.AddDefaultHeader("x-api-key", apiKey);
+            client.UseNewtonsoftJson();
             _client = client;
             _username = username;
             _password = password;
