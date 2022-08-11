@@ -30,8 +30,8 @@ namespace LiaisonCAS.Net.Clients
 
             var ex = new LiaisonClientException("Error fetching account information",
                 response.ErrorException);
-
-            ex.Data.Add("Response", response.Content);
+            
+            ex.AddWebTrace(response.Content);
             throw ex;
         }
     }
