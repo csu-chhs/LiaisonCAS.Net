@@ -16,5 +16,17 @@
         {
 
         }
+
+        /// <summary>
+        /// Adds a data object for the web stack trace response.
+        /// </summary>
+        /// <param name="webStackTrace"></param>
+        public void AddWebTrace(string? webStackTrace)
+        {
+            if (webStackTrace != null)
+            {
+                Data.Add("Web API Response", webStackTrace);
+            }
+        }
     }
 }

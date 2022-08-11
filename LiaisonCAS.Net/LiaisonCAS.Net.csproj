@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>CHHS Application Development Team</Authors>
-    <Version>1.6.0</Version>
+    <Version>1.6.1</Version>
     <PackageProjectUrl>https://github.com/csu-chhs/LiaisonCAS.Net</PackageProjectUrl>
     <Company>College of Health and Human Sciences</Company>
     <PackageId>LiaisonCAS.Net</PackageId>

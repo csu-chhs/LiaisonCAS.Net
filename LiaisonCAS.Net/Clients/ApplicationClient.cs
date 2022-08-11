@@ -41,8 +41,10 @@ namespace LiaisonCAS.Net.Clients
                 throw new LiaisonClientNotFound($"Application ID {applicationId} not found");
             }
 
-            throw new LiaisonClientException($"Failed to fetch application {applicationId} {response.StatusCode}",
+            var ex = new LiaisonClientException($"Failed to fetch application {applicationId} {response.StatusCode}",
                 response.ErrorException);
+            ex.AddWebTrace(response.Content);
+            throw ex;
 
         }
 
@@ -96,8 +98,10 @@ namespace LiaisonCAS.Net.Clients
                 throw new LiaisonClientNotFound($"Application ID {applicationId} not found");
             }
 
-            throw new LiaisonClientException($"Failed to fetch application {applicationId} {response.StatusCode}",
+            var ex = new LiaisonClientException($"Failed to fetch application {applicationId} {response.StatusCode}",
                 response.ErrorException);
+            ex.AddWebTrace(response.Content);
+            throw ex;
         }
 
         /// <summary>
@@ -125,8 +129,10 @@ namespace LiaisonCAS.Net.Clients
                 throw new LiaisonClientNotFound($"Application ID {applicationId} not found");
             }
 
-            throw new LiaisonClientException($"Failed to fetch application {applicationId} {response.StatusCode}",
+            var ex = new LiaisonClientException($"Failed to fetch application {applicationId} {response.StatusCode}",
                 response.ErrorException);
+            ex.AddWebTrace(response.Content);
+            throw ex;
         }
 
         /// <summary>
@@ -148,8 +154,10 @@ namespace LiaisonCAS.Net.Clients
                 return response.Data;
             }
 
-            throw new LiaisonClientException("Failed to fetch applications",
+            var ex = new LiaisonClientException("Failed to fetch applications",
                 response.ErrorException);
+            ex.AddWebTrace(response.Content);
+            throw ex;
         }
 
         /// <summary>
@@ -170,8 +178,10 @@ namespace LiaisonCAS.Net.Clients
                 return response.Data;
             }
 
-            throw new LiaisonClientException("Failed to fetch applications",
+            var ex = new LiaisonClientException("Failed to fetch applications",
                 response.ErrorException);
+            ex.AddWebTrace(response.Content);
+            throw ex;
         }
     }
 }

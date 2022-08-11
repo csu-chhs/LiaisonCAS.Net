@@ -38,8 +38,14 @@ namespace LiaisonCAS.Net.Clients
                 return response.Data;
             }
 
-            throw new LiaisonClientException($"Failed to fetch programs",
+            var ex = new LiaisonClientException($"Failed to fetch programs",
                 response.ErrorException);
+            if (response.Content != null)
+            {
+                ex.AddWebTrace(response.Content);
+            }
+            
+            throw ex;
         }
 
         /// <summary>
@@ -59,8 +65,14 @@ namespace LiaisonCAS.Net.Clients
                 return response.Data;
             }
 
-            throw new LiaisonClientException($"Failed to fetch programs",
+            var ex = new LiaisonClientException($"Failed to fetch programs",
                 response.ErrorException);
+            if (response.Content != null)
+            {
+                ex.AddWebTrace(response.Content);
+            }
+
+            throw ex;
         }
     }
 }
