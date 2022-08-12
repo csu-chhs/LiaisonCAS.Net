@@ -12,6 +12,7 @@ namespace LiaisonCAS.Net
         private readonly string _username;
         private readonly string _password;
         private string _token;
+        private string _refreshToken;
 
         /// <summary>
         /// 
@@ -44,6 +45,41 @@ namespace LiaisonCAS.Net
         }
 
         /// <summary>
+        /// Attempts to remove the previous auth headers.
+        /// </summary>
+        private void _CleanAuthHeader()
+        {
+            foreach (var oldAuthHeader in _client.DefaultParameters
+                         .Where(s => s.Name.Equals("Authorization", StringComparison.OrdinalIgnoreCase)).ToArray())
+            {
+                _client.DefaultParameters.RemoveParameter(oldAuthHeader);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task RefreshToken()
+        {
+            IAuthenticationClient authenticationClient = new AuthenticationClient(_client);
+            AuthenticationTokenRefreshResourceModel refreshModel = new(_refreshToken);
+            AuthenticationTokenRefreshResponseResourceModel? responseToken =
+                await authenticationClient.GetTokenRefreshAsync(refreshModel, default);
+
+            if (responseToken != null)
+            {
+                _token = responseToken.Token;
+            }
+            _CleanAuthHeader();
+            _SetHeader();
+        }
+
+        private void _SetHeader()
+        {
+            _client.AddDefaultHeader("Authorization", $"{_token}");
+        }
+
+        /// <summary>
         /// This method specifically gets placed outside of the 
         /// constructor so that it does not run every time a new object 
         /// is constructed.  DI creates a new object on every page load
@@ -60,7 +96,8 @@ namespace LiaisonCAS.Net
             AuthenticationTokenResponseResourceModel tokenResponse = authenticationClient
                 .FetchAuthenticationToken(tokenResourceModel);
             _token = tokenResponse.Token;
-            _client.AddDefaultHeader("Authorization", $"{_token}");
+            _refreshToken = tokenResponse.RefreshToken;
+            _SetHeader();
         }
 
         /// <summary>
@@ -79,7 +116,8 @@ namespace LiaisonCAS.Net
             AuthenticationTokenResponseResourceModel tokenResponse = await authenticationClient
                 .FetchAuthenticationTokenAsync(tokenResourceModel);
             _token = tokenResponse.Token;
-            _client.AddDefaultHeader("Authorization", $"{_token}");
+            _refreshToken = tokenResponse.RefreshToken;
+            _SetHeader();
         }
 
         /// <summary>

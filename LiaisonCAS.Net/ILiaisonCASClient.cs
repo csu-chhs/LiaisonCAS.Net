@@ -22,6 +22,8 @@ namespace LiaisonCAS.Net
         /// </summary>
         Task SetupAuthenticationHeadersAsync();
 
+        Task RefreshToken();
+
         /// <summary>
         /// Access the Applications API
         /// </summary>

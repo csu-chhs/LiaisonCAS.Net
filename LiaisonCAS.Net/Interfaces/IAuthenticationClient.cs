@@ -20,5 +20,14 @@ namespace LiaisonCAS.Net.Interfaces
         /// <param name="resourceModel"></param>
         /// <returns></returns>
         Task<AuthenticationTokenResponseResourceModel> FetchAuthenticationTokenAsync(AuthenticationTokenResourceModel resourceModel);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="refreshModel"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        Task<AuthenticationTokenRefreshResponseResourceModel?> GetTokenRefreshAsync(AuthenticationTokenRefreshResourceModel refreshModel,
+            CancellationToken token);
     }
 }
