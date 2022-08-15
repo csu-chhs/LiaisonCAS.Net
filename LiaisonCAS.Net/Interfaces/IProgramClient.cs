@@ -11,7 +11,7 @@ namespace LiaisonCAS.Net.Interfaces
         /// <param name="applicationFormId"></param>
         /// <param name="organizationId"></param>
         /// <returns></returns>
-        Task<List<ProgramResourceModel>> GetProgramsAsync(int applicationFormId, int organizationId);
+        Task<List<ProgramResourceModel>?> GetProgramsAsync(int applicationFormId, int organizationId);
 
         /// <summary>
         /// Get a list of programs for the given
@@ -20,6 +20,6 @@ namespace LiaisonCAS.Net.Interfaces
         /// <param name="applicationFormId"></param>
         /// <param name="organizationId"></param>
         /// <returns></returns>
-        List<ProgramResourceModel> GetPrograms(int applicationFormId, int organizationId);
+        List<ProgramResourceModel>? GetPrograms(int applicationFormId, int organizationId);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using LiaisonCAS.Net.Clients;
+using LiaisonCAS.Net.Exceptions;
 using LiaisonCAS.Net.Interfaces;
 using LiaisonCAS.Net.ResourceModels;
 using RestSharp;
@@ -12,6 +13,7 @@ namespace LiaisonCAS.Net
         private readonly string _username;
         private readonly string _password;
         private string _token;
+        private string _refreshToken;
 
         /// <summary>
         /// 
@@ -31,6 +33,8 @@ namespace LiaisonCAS.Net
             _client = client;
             _username = username;
             _password = password;
+            _token = string.Empty;
+            _refreshToken = string.Empty;
 
             Application = new ApplicationClient(_client);
             File = new FileClient(_client);
@@ -41,6 +45,41 @@ namespace LiaisonCAS.Net
             {
                 SetupAuthenticationHeaders();
             }
+        }
+
+        /// <summary>
+        /// Attempts to remove the previous auth headers.
+        /// </summary>
+        private void _CleanAuthHeader()
+        {
+            foreach (var oldAuthHeader in _client.DefaultParameters
+                         .Where(s => s.Name != null && s.Name.Equals("Authorization", StringComparison.OrdinalIgnoreCase)).ToArray())
+            {
+                _client.DefaultParameters.RemoveParameter(oldAuthHeader);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task RefreshToken()
+        {
+            IAuthenticationClient authenticationClient = new AuthenticationClient(_client);
+            AuthenticationTokenRefreshResourceModel refreshModel = new(_refreshToken);
+            AuthenticationTokenRefreshResponseResourceModel? responseToken =
+                await authenticationClient.GetTokenRefreshAsync(refreshModel, default);
+
+            if (responseToken != null)
+            {
+                _token = responseToken.Token;
+            }
+            _CleanAuthHeader();
+            _SetHeader();
+        }
+
+        private void _SetHeader()
+        {
+            _client.AddDefaultHeader("Authorization", $"{_token}");
         }
 
         /// <summary>
@@ -57,10 +96,18 @@ namespace LiaisonCAS.Net
             AuthenticationTokenResourceModel tokenResourceModel = new AuthenticationTokenResourceModel(_username, 
                 _password);
 
-            AuthenticationTokenResponseResourceModel tokenResponse = authenticationClient
+            AuthenticationTokenResponseResourceModel? tokenResponse = authenticationClient
                 .FetchAuthenticationToken(tokenResourceModel);
-            _token = tokenResponse.Token;
-            _client.AddDefaultHeader("Authorization", $"{_token}");
+
+            if (tokenResponse != null)
+            {
+                _token = tokenResponse.Token;
+                _refreshToken = tokenResponse.RefreshToken;
+                _SetHeader();
+            }
+
+            var ex = new LiaisonClientNotAuthorized("Failed to fetch token header");
+            throw ex;
         }
 
         /// <summary>
@@ -76,10 +123,17 @@ namespace LiaisonCAS.Net
             IAuthenticationClient authenticationClient = new AuthenticationClient(_client);
             AuthenticationTokenResourceModel tokenResourceModel = new AuthenticationTokenResourceModel(_username, _password);
 
-            AuthenticationTokenResponseResourceModel tokenResponse = await authenticationClient
+            AuthenticationTokenResponseResourceModel? tokenResponse = await authenticationClient
                 .FetchAuthenticationTokenAsync(tokenResourceModel);
-            _token = tokenResponse.Token;
-            _client.AddDefaultHeader("Authorization", $"{_token}");
+            if (tokenResponse != null)
+            {
+                _token = tokenResponse.Token;
+                _refreshToken = tokenResponse.RefreshToken;
+                _SetHeader();
+            }
+
+            var ex = new LiaisonClientNotAuthorized("Failed to fetch token header");
+            throw ex;
         }
 
         /// <summary>

@@ -2,6 +2,15 @@
 {
     public class ProgramResourceModel
     {
+        public ProgramResourceModel()
+        {
+            Name = string.Empty;
+            Code = string.Empty;
+            OrgName = string.Empty;
+            Status = string.Empty;
+            UniqueIdentifierString = string.Empty;
+            WebadmitName = string.Empty;
+        }
         public string Code { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? Deadline { get; set; }

@@ -2,7 +2,7 @@
 {
     public class BiographicalInformationResourceModel
     {
-        public BirthInformationResourceModel BirthInfo { get; set; }
-        public ProfileInformationResourceModel Profile { get; set; }
+        public BirthInformationResourceModel BirthInfo { get; set; } = null!;
+        public ProfileInformationResourceModel Profile { get; set; } = null!;
     }
 }

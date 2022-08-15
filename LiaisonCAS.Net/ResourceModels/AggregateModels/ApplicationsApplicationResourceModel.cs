@@ -9,6 +9,10 @@
         public ApplicationsApplicationResourceModel()
         {
             SelectedPrograms = new List<ApplicationsSelectedProgram>();
+            AlternateApplicationId = string.Empty;
+            ApplicantFirstName = string.Empty;
+            ApplicantLastName = string.Empty;
+            ApplicationStatus = string.Empty;
         }
 
         public string AlternateApplicationId { get; set; }
