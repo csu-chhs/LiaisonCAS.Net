@@ -105,9 +105,11 @@ namespace LiaisonCAS.Net
                 _refreshToken = tokenResponse.RefreshToken;
                 _SetHeader();
             }
-
-            var ex = new LiaisonClientNotAuthorized("Failed to fetch token header");
-            throw ex;
+            else
+            {
+                var ex = new LiaisonClientNotAuthorized("Failed to fetch token header");
+                throw ex;
+            }
         }
 
         /// <summary>
@@ -131,9 +133,11 @@ namespace LiaisonCAS.Net
                 _refreshToken = tokenResponse.RefreshToken;
                 _SetHeader();
             }
-
-            var ex = new LiaisonClientNotAuthorized("Failed to fetch token header");
-            throw ex;
+            else
+            {
+                var ex = new LiaisonClientNotAuthorized("Failed to fetch token header");
+                throw ex;
+            }
         }
 
         /// <summary>
