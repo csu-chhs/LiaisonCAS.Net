@@ -22,7 +22,7 @@ namespace LiaisonCAS.Net.Clients
         /// </summary>
         /// <param name="resourceModel"></param>
         /// <returns></returns>
-        public AuthenticationTokenResponseResourceModel FetchAuthenticationToken(AuthenticationTokenResourceModel resourceModel)
+        public AuthenticationTokenResponseResourceModel? FetchAuthenticationToken(AuthenticationTokenResourceModel resourceModel)
         {
             var request = new RestRequest($"{_url}");
             request.AddJsonBody(resourceModel);
@@ -43,7 +43,7 @@ namespace LiaisonCAS.Net.Clients
         /// </summary>
         /// <param name="resourceModel"></param>
         /// <returns></returns>
-        public async Task<AuthenticationTokenResponseResourceModel> FetchAuthenticationTokenAsync(AuthenticationTokenResourceModel resourceModel)
+        public async Task<AuthenticationTokenResponseResourceModel?> FetchAuthenticationTokenAsync(AuthenticationTokenResourceModel resourceModel)
         {
             var request = new RestRequest($"{_url}");
             request.AddJsonBody(resourceModel);

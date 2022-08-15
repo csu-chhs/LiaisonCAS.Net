@@ -43,7 +43,7 @@ namespace LiaisonCAS.Net.Clients
 
                 return resourceModel;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 try
                 {
@@ -57,7 +57,7 @@ namespace LiaisonCAS.Net.Clients
 
                     return resourceModel;
                 }
-                catch (Exception ex2)
+                catch (Exception)
                 {
                     throw new LiaisonClientException($"Could not fetch document {fileId}");
                 }
@@ -89,7 +89,7 @@ namespace LiaisonCAS.Net.Clients
 
                 return resourceModel;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 try
                 {
@@ -103,7 +103,7 @@ namespace LiaisonCAS.Net.Clients
 
                     return resourceModel;
                 }
-                catch (Exception ex2)
+                catch (Exception)
                 {
                     throw new LiaisonClientException($"Could not fetch document {fileId}");
                 }

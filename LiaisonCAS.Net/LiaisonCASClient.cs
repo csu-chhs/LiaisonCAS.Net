@@ -1,4 +1,5 @@
 ﻿using LiaisonCAS.Net.Clients;
+using LiaisonCAS.Net.Exceptions;
 using LiaisonCAS.Net.Interfaces;
 using LiaisonCAS.Net.ResourceModels;
 using RestSharp;
@@ -32,6 +33,8 @@ namespace LiaisonCAS.Net
             _client = client;
             _username = username;
             _password = password;
+            _token = string.Empty;
+            _refreshToken = string.Empty;
 
             Application = new ApplicationClient(_client);
             File = new FileClient(_client);
@@ -50,7 +53,7 @@ namespace LiaisonCAS.Net
         private void _CleanAuthHeader()
         {
             foreach (var oldAuthHeader in _client.DefaultParameters
-                         .Where(s => s.Name.Equals("Authorization", StringComparison.OrdinalIgnoreCase)).ToArray())
+                         .Where(s => s.Name != null && s.Name.Equals("Authorization", StringComparison.OrdinalIgnoreCase)).ToArray())
             {
                 _client.DefaultParameters.RemoveParameter(oldAuthHeader);
             }
@@ -93,11 +96,18 @@ namespace LiaisonCAS.Net
             AuthenticationTokenResourceModel tokenResourceModel = new AuthenticationTokenResourceModel(_username, 
                 _password);
 
-            AuthenticationTokenResponseResourceModel tokenResponse = authenticationClient
+            AuthenticationTokenResponseResourceModel? tokenResponse = authenticationClient
                 .FetchAuthenticationToken(tokenResourceModel);
-            _token = tokenResponse.Token;
-            _refreshToken = tokenResponse.RefreshToken;
-            _SetHeader();
+
+            if (tokenResponse != null)
+            {
+                _token = tokenResponse.Token;
+                _refreshToken = tokenResponse.RefreshToken;
+                _SetHeader();
+            }
+
+            var ex = new LiaisonClientNotAuthorized("Failed to fetch token header");
+            throw ex;
         }
 
         /// <summary>
@@ -113,11 +123,17 @@ namespace LiaisonCAS.Net
             IAuthenticationClient authenticationClient = new AuthenticationClient(_client);
             AuthenticationTokenResourceModel tokenResourceModel = new AuthenticationTokenResourceModel(_username, _password);
 
-            AuthenticationTokenResponseResourceModel tokenResponse = await authenticationClient
+            AuthenticationTokenResponseResourceModel? tokenResponse = await authenticationClient
                 .FetchAuthenticationTokenAsync(tokenResourceModel);
-            _token = tokenResponse.Token;
-            _refreshToken = tokenResponse.RefreshToken;
-            _SetHeader();
+            if (tokenResponse != null)
+            {
+                _token = tokenResponse.Token;
+                _refreshToken = tokenResponse.RefreshToken;
+                _SetHeader();
+            }
+
+            var ex = new LiaisonClientNotAuthorized("Failed to fetch token header");
+            throw ex;
         }
 
         /// <summary>

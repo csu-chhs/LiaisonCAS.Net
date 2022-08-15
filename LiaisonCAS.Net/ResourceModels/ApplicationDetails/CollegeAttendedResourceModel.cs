@@ -2,6 +2,11 @@
 {
     public class CollegeAttendedResourceModel
     {
+        public CollegeAttendedResourceModel()
+        {
+            CollegeEndYear = string.Empty;
+        }
+
         public bool AcademicUpdate { get; set; }
         public string? AccreditingAgency { get; set; }
         public string? CeebCode { get; set; }

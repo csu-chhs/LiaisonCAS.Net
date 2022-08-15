@@ -11,13 +11,13 @@ namespace LiaisonCAS.Net.Interfaces
         /// <param name="applicationFormId"></param>
         /// <param name="applicationId"></param>
         /// <returns></returns>
-        Task<ApplicationResourceModel> GetApplicationAsync(int applicationFormId, 
+        Task<ApplicationResourceModel?> GetApplicationAsync(int applicationFormId, 
             long applicationId);
 
-        Task<ApplicationResourceModel> GetApplicationAsync(int applicationFormId,
+        Task<ApplicationResourceModel?> GetApplicationAsync(int applicationFormId,
             int organizationId, int programId, long applicationId, string expand = "all");
 
-        ApplicationResourceModel GetApplication(int applicationFormId,
+        ApplicationResourceModel? GetApplication(int applicationFormId,
             int organizationId, int programId, long applicationId, string expand = "all");
         
         /// <summary>
@@ -26,7 +26,7 @@ namespace LiaisonCAS.Net.Interfaces
         /// <param name="applicationFormId"></param>
         /// <param name="applicationId"></param>
         /// <returns></returns>
-        ApplicationResourceModel GetApplication(int applicationFormId,
+        ApplicationResourceModel? GetApplication(int applicationFormId,
             long applicationId);
         
         /// <summary>
@@ -36,7 +36,7 @@ namespace LiaisonCAS.Net.Interfaces
         /// <param name="organizationId"></param>
         /// <param name="programId"></param>
         /// <returns></returns>
-        Task<ListApplicationsResourceModel> GetApplicationsAsync(int applicationFormId,
+        Task<ListApplicationsResourceModel?> GetApplicationsAsync(int applicationFormId,
             int organizationId, int programId);
         
         /// <summary>
@@ -46,7 +46,7 @@ namespace LiaisonCAS.Net.Interfaces
         /// <param name="organizationId"></param>
         /// <param name="programId"></param>
         /// <returns></returns>
-        ListApplicationsResourceModel GetApplications(int applicationFormId,
+        ListApplicationsResourceModel? GetApplications(int applicationFormId,
             int organizationId, int programId);
     }
 }

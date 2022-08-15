@@ -10,7 +10,7 @@ namespace LiaisonCAS.Net.Interfaces
         /// </summary>
         /// <param name="resourceModel"></param>
         /// <returns></returns>
-        AuthenticationTokenResponseResourceModel FetchAuthenticationToken(
+        AuthenticationTokenResponseResourceModel? FetchAuthenticationToken(
             AuthenticationTokenResourceModel resourceModel);
 
         /// <summary>
@@ -19,10 +19,10 @@ namespace LiaisonCAS.Net.Interfaces
         /// </summary>
         /// <param name="resourceModel"></param>
         /// <returns></returns>
-        Task<AuthenticationTokenResponseResourceModel> FetchAuthenticationTokenAsync(AuthenticationTokenResourceModel resourceModel);
+        Task<AuthenticationTokenResponseResourceModel?> FetchAuthenticationTokenAsync(AuthenticationTokenResourceModel resourceModel);
 
         /// <summary>
-        /// 
+        /// Refreshes a token
         /// </summary>
         /// <param name="refreshModel"></param>
         /// <param name="token"></param>

@@ -22,7 +22,7 @@ namespace LiaisonCAS.Net.Clients
         /// <param name="applicationFormId"></param>
         /// <param name="applicationId"></param>
         /// <returns></returns>
-        public async Task<ApplicationResourceModel> GetApplicationAsync(int applicationFormId, long applicationId)
+        public async Task<ApplicationResourceModel?> GetApplicationAsync(int applicationFormId, long applicationId)
         {
             var request = new RestRequest($"applicationForms/{applicationFormId}/applications/{applicationId}");
             var response = await _client.ExecuteAsync<ApplicationResourceModel>(request);
@@ -48,7 +48,7 @@ namespace LiaisonCAS.Net.Clients
 
         }
 
-        public async Task<ApplicationResourceModel> GetApplicationAsync(int applicationFormId, int organizationId, 
+        public async Task<ApplicationResourceModel?> GetApplicationAsync(int applicationFormId, int organizationId, 
             int programId, long applicationId, string expand = "all")
         {
             var request =
@@ -75,7 +75,7 @@ namespace LiaisonCAS.Net.Clients
                 response.ErrorException);
         }
 
-        public ApplicationResourceModel GetApplication(int applicationFormId, int organizationId, 
+        public ApplicationResourceModel? GetApplication(int applicationFormId, int organizationId, 
             int programId, long applicationId, string expand = "all")
         {
             var request =
@@ -110,7 +110,7 @@ namespace LiaisonCAS.Net.Clients
         /// <param name="applicationFormId"></param>
         /// <param name="applicationId"></param>
         /// <returns></returns>
-        public ApplicationResourceModel GetApplication(int applicationFormId, long applicationId)
+        public ApplicationResourceModel? GetApplication(int applicationFormId, long applicationId)
         {
             var request = new RestRequest($"applicationForms/{applicationFormId}/applications/{applicationId}");
             var response = _client.ExecuteAsync<ApplicationResourceModel>(request).Result;
@@ -142,7 +142,7 @@ namespace LiaisonCAS.Net.Clients
         /// <param name="organizationId"></param>
         /// <param name="programId"></param>
         /// <returns></returns>
-        public async Task<ListApplicationsResourceModel> GetApplicationsAsync(int applicationFormId, 
+        public async Task<ListApplicationsResourceModel?> GetApplicationsAsync(int applicationFormId, 
             int organizationId, int programId)
         {
             var request =
@@ -167,7 +167,7 @@ namespace LiaisonCAS.Net.Clients
         /// <param name="organizationId"></param>
         /// <param name="programId"></param>
         /// <returns></returns>
-        public ListApplicationsResourceModel GetApplications(int applicationFormId, int organizationId, int programId)
+        public ListApplicationsResourceModel? GetApplications(int applicationFormId, int organizationId, int programId)
         {
             var request =
                 new RestRequest(

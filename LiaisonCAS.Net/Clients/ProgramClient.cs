@@ -22,7 +22,7 @@ namespace LiaisonCAS.Net.Clients
         /// <param name="applicationFormId"></param>
         /// <param name="organizationId"></param>
         /// <returns></returns>
-        public async Task<List<ProgramResourceModel>> GetProgramsAsync(int applicationFormId, int organizationId)
+        public async Task<List<ProgramResourceModel>?> GetProgramsAsync(int applicationFormId, int organizationId)
         {
             var request =
                 new RestRequest($"applicationForms/{applicationFormId}/organizations/{organizationId}/programs");
@@ -55,7 +55,7 @@ namespace LiaisonCAS.Net.Clients
         /// <param name="applicationFormId"></param>
         /// <param name="organizationId"></param>
         /// <returns></returns>
-        public List<ProgramResourceModel> GetPrograms(int applicationFormId, int organizationId)
+        public List<ProgramResourceModel>? GetPrograms(int applicationFormId, int organizationId)
         {
             var request =
                 new RestRequest($"applicationForms/{applicationFormId}/organizations/{organizationId}/programs");
