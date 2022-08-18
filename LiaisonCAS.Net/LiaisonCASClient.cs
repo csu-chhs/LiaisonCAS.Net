@@ -91,6 +91,7 @@ namespace LiaisonCAS.Net
         /// </summary>
         public void SetupAuthenticationHeaders()
         {
+            _CleanAuthHeader();
             // Fetch and set the token.
             IAuthenticationClient authenticationClient = new AuthenticationClient(_client);
             AuthenticationTokenResourceModel tokenResourceModel = new AuthenticationTokenResourceModel(_username, 
@@ -121,6 +122,7 @@ namespace LiaisonCAS.Net
         /// </summary>
         public async Task SetupAuthenticationHeadersAsync()
         {
+            _CleanAuthHeader();
             // Fetch and set the token.
             IAuthenticationClient authenticationClient = new AuthenticationClient(_client);
             AuthenticationTokenResourceModel tokenResourceModel = new AuthenticationTokenResourceModel(_username, _password);
