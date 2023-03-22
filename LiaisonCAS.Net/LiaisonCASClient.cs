@@ -27,9 +27,9 @@ namespace LiaisonCAS.Net
             string password,
             bool autoRegisterAuthHeader = false)
         {
-            RestClient client = new RestClient("https://api.liaisonedu.com/v1/");
+            RestClient client = new RestClient("https://api.liaisonedu.com/v1/",
+                configureSerialization: s => s.UseNewtonsoftJson());
             client.AddDefaultHeader("x-api-key", apiKey);
-            client.UseNewtonsoftJson();
             _client = client;
             _username = username;
             _password = password;
