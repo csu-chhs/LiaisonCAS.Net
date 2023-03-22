@@ -13,6 +13,7 @@
     <PackageDescription>Liaison Edu CAS API Client</PackageDescription>
     <RepositoryUrl>https://github.com/csu-chhs/LiaisonCAS.Net</RepositoryUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
