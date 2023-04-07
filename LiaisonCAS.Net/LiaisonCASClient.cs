@@ -52,11 +52,7 @@ namespace LiaisonCAS.Net
         /// </summary>
         private void _CleanAuthHeader()
         {
-            foreach (var oldAuthHeader in _client.DefaultParameters
-                         .Where(s => s.Name != null && s.Name.Equals("Authorization", StringComparison.OrdinalIgnoreCase)).ToArray())
-            {
-                _client.DefaultParameters.RemoveParameter(oldAuthHeader);
-            }
+            _client.DefaultParameters.RemoveParameter("Authorization", ParameterType.HttpHeader);
         }
 
         /// <summary>
