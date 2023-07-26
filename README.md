@@ -1,3 +1,6 @@
+# No Longer Maintained
+This library is no longer maintained by CHHS.  If you, or your organization would like to take ownership of this repository, please get in contact with us.
+
 # LiaisonCAS.Net
 
 Liaison CAS is a .Net implementation (client SDK) for the LiaisonEDU CAS API (https://api.liaisonedu.com/reference/index.htm).  With this client you can programatically interact with the Liaison API with .Net languages.
